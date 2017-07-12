@@ -5,7 +5,8 @@ RSpec.describe Vcloud::Converter do
     expect(Vcloud::Converter::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "converts 'vcloud-net_launcher' YAML to Terraform" do
+    terraform_conversion = File.read('./spec/fixtures/vdc_networks.tf')
+    expect(Vcloud::Converter.convert('vcloud-net_launcher', './spec/fixtures/vdc_networks.yaml')).to output(terraform_conversion).to_stdout
   end
 end
