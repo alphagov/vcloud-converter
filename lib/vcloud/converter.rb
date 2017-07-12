@@ -2,6 +2,7 @@ require "vcloud/converter/version"
 
 module Vcloud
   module Converter
-    # Your code goes here...
+    def self.convert(conversion_type, file_path)
+    end
   end
 end

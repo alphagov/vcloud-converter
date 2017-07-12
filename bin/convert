@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "vcloud/converter"
+require "optparse"
+
+ARGV << '-h' if ARGV.empty?
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: ./bin/convert -t vcloud-net_launcher -p path/to/file.yaml"
+
+  opts.on('-t', '--type TYPE', 'Type of YAML file for conversion.') { |v| options[:type] = v }
+  opts.on('-p', '--path PATH', 'Path to YAML file for conversion.') { |v| options[:path] = v }
+
+  opts.on_tail("-h", "--help", "Show this help message.") do
+    puts opts
+    exit
+  end
+end.parse!
+
+Vcloud::Converter.convert(options[:type], options[:path])
