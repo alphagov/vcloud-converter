@@ -1,0 +1,14 @@
+resource "vcd_network" "<%= name %>" {
+  name          = "<%= vdc_name %>"
+  edge_gateway  = "<%= edge_gateway %>"
+  gateway       = "<%= gateway %>"
+  netmask       = "<%= netmask %>"
+  dns1          = "<%= dns1 %>"
+  dns2          = "<%= dns2 %>"
+  dns_suffix    = "<%= dns_suffix %>"
+
+  static_ip_pool {
+    start_address = "<%= start_address %>"
+    end_address   = "<%= end_address %>"
+  }
+}
