@@ -18,4 +18,9 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-Vcloud::Converter.convert(options[:type], options[:path])
+if File.exists?(File.expand_path(options[:path]))
+  Vcloud::Converter.convert(options[:type], options[:path])
+else
+  puts "The file you specified - #{options[:path]} - doesn't exist."
+  exit
+end
